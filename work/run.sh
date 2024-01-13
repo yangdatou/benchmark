@@ -29,4 +29,5 @@ mkdir -p $TMPDIR
 export PYTHONPATH=/home/yangjunjie/packages/pyscf/pyscf-main/
 export PYTHONUNBUFFERED=TRUE;
 
+export XYZ_PATH="/home/yangjunjie/work/benchmark/xyz/"
 python main.py

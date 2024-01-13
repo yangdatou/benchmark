@@ -8,7 +8,7 @@ def WaterCluster(n=64, basis="ccpvdz", verbose=4):
     assert xyz_path is not None
 
     atom = ""
-    with open(xyz_path, "r") as f:
+    with open(os.path.join(xyz_path, "64h2o.xyz"), "r") as f:
         lines = f.readlines()
         atom = "".join(lines[(2):(2+3*n)])
 
