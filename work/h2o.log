@@ -1,0 +1,8 @@
+model name	: Intel(R) Xeon(R) CPU E5-2680 v4 @ 2.40GHz
+MemTotal:       263133644 kB
+OMP_NUM_THREADS=28
+
+    CPU time for n =  2, get_veff     16.57 sec, wall time      0.66 sec
+    CPU time for n =  4, get_veff    157.69 sec, wall time      5.91 sec
+    CPU time for n =  8, get_veff    318.79 sec, wall time     11.51 sec
+    CPU time for n = 16, get_veff   1743.80 sec, wall time     62.61 sec

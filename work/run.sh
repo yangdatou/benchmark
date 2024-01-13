@@ -26,7 +26,6 @@ echo TMPDIR       = $TMPDIR
 echo PYSCF_TMPDIR = $PYSCF_TMPDIR
 mkdir -p $TMPDIR
 
-export PYTHONPATH=/home/yangjunjie/packages/pyscf/pyscf-main/
 export PYTHONUNBUFFERED=TRUE;
 
 export XYZ_PATH="/home/yangjunjie/work/benchmark/xyz/"

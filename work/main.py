@@ -42,15 +42,12 @@ def get_cpu_timings():
 if __name__ == "__main__":
     log = setup_logger(stdout=open("h2o.log", "w"))
     for n in [2, 4, 8, 16, 32, 48, 64]:
-        m = WaterCluster(n=n, basis="ccpvdz", verbose=0)
+        m = WaterCluster(n=n, basis="ccpvqz", verbose=0)
 
         h = pyscf.scf.RHF(m)
         dm0 = h.get_init_guess(key="minao")
 
         t0 = get_cpu_timings()
         vj = h.get_jk(dm=dm0, hermi=1)[0]
-        h.verbose = 5
-        log.timer(h, "n = %2d, get_veff" % n, *t0)
-
-        assert h._eri is not None
+        log.timer("n = %2d, get_veff" % n, *t0)
 
