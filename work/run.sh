@@ -1,9 +1,9 @@
 #!/bin/bash
-#SBATCH --partition=serial
-#SBATCH --time=120:00:00
+#SBATCH --partition=debug
+#SBATCH --time=01:00:00
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=28
-#SBATCH --job-name=cceph-fci
+#SBATCH --job-name=benchmark
 #SBATCH --mem=0
 
 module purge
@@ -26,10 +26,7 @@ echo TMPDIR       = $TMPDIR
 echo PYSCF_TMPDIR = $PYSCF_TMPDIR
 mkdir -p $TMPDIR
 
-export PYTHONPATH=/home/yangjunjie/work/cc-eph/cceph-main
-export PYTHONPATH=/home/yangjunjie/work/cc-eph/epcc-hol:$PYTHONPATH
-export PYTHONPATH=/home/yangjunjie/work/cc-eph/wick-dev:$PYTHONPATH
-export PYTHONPATH=/home/yangjunjie/work/cc-eph/cqcpy-master:$PYTHONPATH
-export PYTHONPATH=/home/yangjunjie/packages/pyscf/pyscf-main/:$PYTHONPATH
-export PYTHONPATH=/home/yangjunjie/work/holstein-results/src/:$PYTHONPATH
+export PYTHONPATH=/home/yangjunjie/packages/pyscf/pyscf-main/
 export PYTHONUNBUFFERED=TRUE;
+
+python main.py
