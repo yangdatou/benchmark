@@ -22,8 +22,8 @@ def WaterCluster(n=64, basis="ccpvdz", verbose=4):
     mol.build()
     return mol
 
-def setup_logger():
-    log = pyscf.lib.logger.Logger(verbose=5)
+def setup_logger(stdout=None):
+    log = pyscf.lib.logger.Logger(verbose=5, stdout=stdout)
     with open('/proc/cpuinfo') as f:
         for line in f:
             if 'model name' in line:
@@ -39,7 +39,8 @@ def get_cpu_timings():
     t2 = logger.perf_counter()
     return t1, t2
 
-def main():
+if __name__ == "__main__":
+    log = setup_logger(stdout=open("h2o.log", "w"))
     for n in [2, 4, 8, 16, 32, 48, 64]:
         m = WaterCluster(n=n, basis="ccpvdz", verbose=0)
 
@@ -49,6 +50,7 @@ def main():
         t0 = get_cpu_timings()
         vj = h.get_jk(dm=dm0, hermi=1)[0]
         h.verbose = 5
-        logger.timer(h, "n = %2d, get_veff" % n, *t0)
+        log.timer(h, "n = %2d, get_veff" % n, *t0)
 
         assert h._eri is not None
+
